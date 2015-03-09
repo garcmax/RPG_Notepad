@@ -4,6 +4,7 @@ var app            = express();
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose       = require('mongoose');
+var path           = require('path');
 
 // configuration ===========================================
 
@@ -41,6 +42,7 @@ app.listen(port);
 
 // shoutout to the user
 console.log('Magic happens on port ' + port);
+//console.log("__dirname = %s", path.resolve(__dirname));
 
 // expose app
 exports = module.exports = app;
