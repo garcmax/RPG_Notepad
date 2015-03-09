@@ -10,8 +10,8 @@
 
 
         .when('/simpleNote', {
-            templateUrl: 'views/simpleNote.html',
-            controller: 'NerdController'
+            templateUrl: 'views/simpleNotes.html',
+            controller: 'SimpleNoteController'
         });
 
     $locationProvider.html5Mode(true);
