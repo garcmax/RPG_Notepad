@@ -4,6 +4,6 @@ angular.module('NoteServices', []).factory('Note', ['$http', function($http) {
         get : function() {
             return $http.get('/api/simpleNote');
         }
-    }
+    };
 
 }]);
