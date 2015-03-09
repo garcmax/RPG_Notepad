@@ -1,4 +1,4 @@
-/*angular.module('NoteServices', []).factory('Note', ['$http', function($http) {
+angular.module('NoteServices', []).factory('Note', ['$http', function($http) {
 
     return {
         get : function() {
@@ -6,4 +6,4 @@
         }
     }
 
-}]);*/
+}]);
