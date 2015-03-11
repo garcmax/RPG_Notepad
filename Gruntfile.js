@@ -26,6 +26,19 @@ module.exports = function(grunt) {
       }
     },
 
+    //unit testing
+    karma: {
+          options: {
+            // point all tasks to karma config file
+            configFile: 'test/karma-conf.js'
+          },
+          unit: {
+            // run tests once instead of continuously
+            singleRun: true
+          }
+        },
+
+
     // CSS TASKS ===============================================================
     // process the less file to style.css
     less: {
@@ -77,6 +90,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -84,6 +98,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-contrib-concat');
 
-  grunt.registerTask('default', ['less', 'cssmin', 'concat', 'jshint', 'uglify', 'concurrent']);
+  grunt.registerTask('default', ['less', 'cssmin', 'concat', 'jshint', 'uglify', 'karma', 'concurrent']);
+  grunt.registerTask('test', ['karma']);
 
 };
