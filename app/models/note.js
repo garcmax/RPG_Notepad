@@ -1,7 +1,7 @@
 // grab the mongoose module
 var mongoose = require('mongoose');
+var schema = mongoose.Schema;
 
-// module.exports allows us to pass this to other files when it is called
-module.exports = mongoose.model('simpleNote', {
-    name : {type : String, default: ''}
-});
+var simpleNoteSchema = new schema({note: String});
+
+module.exports = mongoose.model('SimpleNote', simpleNoteSchema);
