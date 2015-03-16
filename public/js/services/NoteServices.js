@@ -1,9 +1,7 @@
-angular.module('NoteServices', []).factory('Note', ['$http', function($http) {
+angular.module('services', ['ngResource']).factory('NoteService', ['$resource', function($resource) {
 
-    return {
-        get : function() {
-            return $http.get('/api/simpleNote');
-        }
-    };
+        return $resource('/api/simpleNote/:id', {}, {
+                'id' : '@id'
+            });
 
 }]);

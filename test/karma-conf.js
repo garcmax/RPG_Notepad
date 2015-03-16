@@ -8,13 +8,14 @@ module.exports = function(config){
       // include relevant Angular files and libs
       'public/libs/angular/angular.js',
       'public/libs/angular-route/angular-route.js',
+      'test/libs/angular-resource/angular-resource.js',
       'test/libs/angular-mocks/angular-mocks.js',
 
       // include js files
       'public/dist/js/app.js',
 
       // include unit test specs
-      'test/unit/*.js'
+      'test/unit/*/*.js'
     ],
     // files to exclude
     exclude : [

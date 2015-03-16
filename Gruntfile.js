@@ -97,8 +97,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-shell-spawn');
 
-  grunt.registerTask('default', ['less', 'cssmin', 'concat', 'jshint', 'uglify', 'karma', 'concurrent']);
-  grunt.registerTask('test', ['karma']);
-
+  grunt.registerTask('default', ['less', 'cssmin', 'concat', 'jshint', 'uglify', 'concurrent']);
+  grunt.registerTask('test', ['concat', 'karma']);
 };

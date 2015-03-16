@@ -2,6 +2,8 @@
   "name": "RpgBlocNoteTests",
   "version": "1.0.0",
   "dependencies": {
-    "angular-mocks": "latest"
+    "angular": "latest",
+    "angular-mocks": "latest",
+    "angular-resource": "latest"
   }
 }

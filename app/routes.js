@@ -78,5 +78,4 @@ module.exports = function(app, express) {
 
     // REGISTER OUR ROUTES -------------------------------
     app.use('/', router);
-
 }
