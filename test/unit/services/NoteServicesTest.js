@@ -15,6 +15,11 @@ describe('service : NoteService ', function () {
         });
     });
 
+    afterEach(function() {
+         $httpBackend.verifyNoOutstandingExpectation();
+         $httpBackend.verifyNoOutstandingRequest();
+       });
+
     it('should exist', function () {
         expect( !! srv).toBe(true);
     });
@@ -24,10 +29,10 @@ describe('service : NoteService ', function () {
         // mock the response to a particular get request
         $httpBackend.whenGET('/api/simpleNote').respond([{
             id: 1,
-            note: 'simple note 1'
+            note: 'toto'
         }, {
             id: 2,
-            note: 'simple note 2'
+            note: 'tata'
         }]);
 
         // send request to get everyone
@@ -37,10 +42,10 @@ describe('service : NoteService ', function () {
         $httpBackend.flush();
         expect(JSON.stringify(data)).toBe(JSON.stringify([{
             id: 1,
-            note: 'simple note 1'
+            note: 'toto'
         }, {
             id: 2,
-            note: 'simple note 2'
+            note: 'tata'
         }]));
     });
 
@@ -48,15 +53,22 @@ describe('service : NoteService ', function () {
         // mock the response to a particular get request
         $httpBackend.whenGET('/api/simpleNote/1').respond({
             id: 1,
-            note: 'asdfasdf'
+            note: 'toto'
         });
-        var datum = srv.get({
+        var data = srv.get({
             id: 1
         });
         $httpBackend.flush();
-        expect(JSON.stringify(datum)).toBe(JSON.stringify({
+        expect(JSON.stringify(data)).toBe(JSON.stringify({
             id: 1,
-            note: 'asdfasdf'
+            note: 'toto'
         }));
+    });
+
+    it ('post a new note', function () {
+        $httpBackend.whenPOST('/api/simpleNote', {note: 'note', id:'1'}).respond(201, '');
+        var data = srv.post();
+        $httpBackend.flush();
+        expect(data).not.toBe(null);
     });
 });
