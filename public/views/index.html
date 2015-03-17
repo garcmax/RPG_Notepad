@@ -24,7 +24,7 @@
 <div class="container">
 
     <!-- HEADER -->
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-default">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">Summary</a>
         </div>
@@ -46,7 +46,7 @@
             <ul class="list-group">
                 <li class="list-group-item list-group-item-success"  ng-repeat="postIt in postIts">
                     {{postIt.note}}
-                    <button type="button" class="btn btn-success btn-xs" ng-click="removePostIt()">
+                    <button type="button" class="btn btn-danger btn-xs" style="vertical-align: middle; float: right; " ng-click="removePostIt(postIt)">
                         <span class="glyphicon glyphicon-remove-sign"></span>
                     </button>
                 </li>
