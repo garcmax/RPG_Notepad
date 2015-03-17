@@ -1,16 +1,17 @@
 var SimpleNote = require('./models/note');
+var path = require('path');
 
 module.exports = function(app, express) {
     // ROUTES FOR OUR API
     // =============================================================================
     var router = express.Router();              // get an instance of the express Router
 
-    router.use(function(req, res, next) {
+    /*router.use(function(req, res, next) {
         // do logging
         console.log("req = ");
         console.log(req.body);
         next(); // make sure we go to the next routes and don't stop here
-    });
+    });*/
 
     // frontend routes =========================================================
     // route to handle all angular requests

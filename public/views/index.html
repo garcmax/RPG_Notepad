@@ -14,12 +14,13 @@
     <!-- JS -->
     <script src="libs/angular/angular.min.js"></script>
     <script src="libs/angular-route/angular-route.min.js"></script>
+    <script src="libs/angular-resource/angular-resource.min.js"></script>
 
     <!-- ANGULAR CUSTOM -->
     <script src="dist/js/app.min.js"></script>
 
 </head>
-<body ng-app="rpgNoteApp" ng-controller="SimpleNoteController">
+<body ng-app="rpgNoteApp">
 <div class="container">
 
     <!-- HEADER -->
@@ -30,15 +31,35 @@
 
         <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
         <ul class="nav navbar-nav">
-            <li><a href="/simpleNote">Simple Note</a></li>
+            <li><a href="/simpleNote">Simple Notes</a></li>
         </ul>
         <ul class="nav navbar-nav">
             <li><a href="/npcNote">NPC Notes</a></li>
         </ul>
+        <ul class="nav navbar-nav">
+            <li><a href="/locNote">Locations Notes</a></li>
+        </ul>
     </nav>
 
-    <!-- ANGULAR DYNAMIC CONTENT -->
-    <div ng-view></div>
+    <div class="row">
+        <div class="col-sm-3" ng-controller="PostItController">
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success"  ng-repeat="postIt in postIts">
+                    {{postIt.note}}
+                    <button type="button" class="btn btn-success btn-xs" ng-click="removePostIt()">
+                        <span class="glyphicon glyphicon-remove-sign"></span>
+                    </button>
+                </li>
+            </ul>
+            <form ng-submit="addPostIt()">
+                <label>Post-It :</label>
+                <input type="text" class="form-control" placeholder="Add a post-it" ng-model="newPostIt">
+            </form>
+    </div>
+
+        <!-- ANGULAR DYNAMIC CONTENT -->
+        <div class="col-sm-9" ng-view></div>
+    </div>
 
 </div>
 </body>

@@ -12,7 +12,14 @@
         .when('/simpleNote', {
             templateUrl: 'views/simpleNotes.html',
             controller: 'SimpleNoteController'
+        })
+
+        .when('/npcNote', {
+            templateUrl: 'views/npcNotes.html',
+            controller: 'PostItController'
         });
+
+
 
     $locationProvider.html5Mode(true);
 

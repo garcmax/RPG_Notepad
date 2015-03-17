@@ -67,7 +67,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['public/js/**/*.js'],
-        tasks: ['jshint', 'uglify']
+        tasks: ['concat', 'jshint', 'uglify']
       }
     },
 
@@ -101,4 +101,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['less', 'cssmin', 'concat', 'jshint', 'uglify', 'concurrent']);
   grunt.registerTask('test', ['concat', 'karma']);
+  grunt.registerTask('dist', ['jshint', 'concat', 'uglify'])
 };

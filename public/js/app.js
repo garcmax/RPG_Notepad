@@ -1,2 +1,2 @@
 // public/js/app.js
-angular.module('rpgNoteApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'SimpleNoteCtrl', 'services']);
+angular.module('rpgNoteApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'SimpleNoteCtrl', 'PostItCtrl', 'services']);
