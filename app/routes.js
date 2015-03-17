@@ -1,4 +1,5 @@
 var SimpleNote = require('./models/note');
+var PostIt = require('./models/postIt')
 var path = require('path');
 
 module.exports = function(app, express) {
@@ -22,6 +23,43 @@ module.exports = function(app, express) {
     //test our api
     router.get('/api/test', function(req, res) {
         res.json({ message: 'hooray! welcome to our api!' });
+    });
+
+    router.route('/api/postIt')
+    .post(function (req, res) {
+        var postIt = new PostIt();
+        postIt.note = req.body.note;
+
+        postIt.save(function(err) {
+            if (err) {
+                res.send(err);
+            }
+            res.json({message : 'postIt Created'});
+        });
+    })
+    .get(function (req, res) {
+        PostIt.find(function(err, postIts) {
+            if (err)
+                res.send(err)
+            res.json(postIts);
+        });
+    });
+    router.route('/api/postIt/:id')
+    .get(function(req, res) {
+        PostIt.findById(req.params.id, function(err, postIt) {
+            if (err)
+                res.send(err);
+            res.json(postIt);
+        });
+    })
+    .delete(function(req, res) {
+        PostIt.remove({
+            _id: req.params.id
+            }, function(err, postIt) {
+                if (err)
+                    res.send(err)
+                res.json({message : 'postIt deleted successfully'})
+            });
     });
 
     router.route('/api/simpleNote')
