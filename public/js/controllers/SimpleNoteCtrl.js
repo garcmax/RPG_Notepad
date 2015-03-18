@@ -1,5 +1,5 @@
 angular.module('SimpleNoteCtrl', []).controller('SimpleNoteController', ['$scope', function($scope) {
 
-    $scope.tagline = 'test';
+    $scope.tagline = 'Nothing beats a pocket protector!';
 
 }]);

@@ -1,23 +1,35 @@
-angular.module('PostItCtrl', []).controller('PostItController', ['$scope', function($scope) {
+angular.module('PostItCtrl', []).controller('PostItController', ['$scope', 'PostItService', function($scope, postItSrv) {
+
+    //get all the post its
+    postItSrv.query().$promise.then(function (value) {
+        $scope.postIts = value;
+        console.log(value);
+    });
 
 
-    //to fill by GET
-    $scope.postIts = [{note: "post it 1"}, {note: "post it 2 le deuxième oui sur plusieurs lignes ça donne quoi"}];
 
     $scope.addPostIt = function () {
-        //to do with POST
-        $scope.postIts.push({note: $scope.newPostIt});
-        $scope.newPostIt = '';
+        //post a new post it
+        var newPostIt = {note: $scope.newPostIt};
+        postItSrv.save(newPostIt).$promise.then(function (value) {
+            $scope.postIts.push(newPostIt);
+            $scope.newPostIt = '';
+        }, function(err) {
+            //TODO : error management
+            console.log(err);
+        });
     };
 
     $scope.removePostIt = function (postIt) {
-        console.log(postIt);
         var idx = $scope.postIts.indexOf(postIt);
-        console.log(idx);
         var postItToRemove = $scope.postIts[idx];
-        console.log(postItToRemove);
 
-        //to do with DELETE
-        $scope.postIts.splice(idx, 1);
+        //Delete a post it
+        postItSrv.remove({id: postItToRemove._id}).$promise.then(function (value) {
+            $scope.postIts.splice(idx, 1);
+        }, function(err) {
+            //TODO : error management
+            console.log(err);
+        });
     };
 }]);

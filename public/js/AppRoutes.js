@@ -8,7 +8,6 @@
             controller: 'MainController'
         })
 
-
         .when('/simpleNote', {
             templateUrl: 'views/simpleNotes.html',
             controller: 'SimpleNoteController'
@@ -18,7 +17,6 @@
             templateUrl: 'views/npcNotes.html',
             controller: 'PostItController'
         });
-
 
 
     $locationProvider.html5Mode(true);
