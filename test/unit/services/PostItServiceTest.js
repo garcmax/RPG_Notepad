@@ -67,7 +67,7 @@ describe('service : PostItService ', function () {
 
     it ('post a new postit', function () {
         $httpBackend.whenPOST('/api/postIt', {note: 'note', id:'1'}).respond(201, '');
-        var data = srv.post();
+        var data = srv.save();
         $httpBackend.flush();
         expect(data).not.toBe(null);
     });

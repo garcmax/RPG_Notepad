@@ -67,7 +67,7 @@ describe('service : NoteService ', function () {
 
     it ('post a new note', function () {
         $httpBackend.whenPOST('/api/simpleNote', {note: 'note', id:'1'}).respond(201, '');
-        var data = srv.post();
+        var data = srv.save();
         $httpBackend.flush();
         expect(data).not.toBe(null);
     });

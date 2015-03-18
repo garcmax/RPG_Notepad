@@ -1,5 +1,7 @@
-angular.module('SimpleNoteCtrl', []).controller('SimpleNoteController', ['$scope', function($scope) {
+angular.module('SimpleNoteCtrl', []).controller('SimpleNoteController', ['$scope', 'NoteService', function($scope, NoteService) {
 
-    $scope.tagline = 'Nothing beats a pocket protector!';
+    NoteService.query().$promise.then(function (value) {
+        $scope.notes = value;
+    })
 
 }]);
