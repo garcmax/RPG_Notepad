@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     //concat all js files in specific orders
     concat: {
         dist: {
-          src: ['public/js/app.js', 'public/js/AppRoutes.js', 'public/js/services/*.js', 'public/js/controllers/*.js'],
+          src: ['public/js/app.js', 'public/js/AppRoutes.js', 'public/js/services/*.js', 'public/js/interceptors/*.js', 'public/js/controllers/*.js'],
           dest: 'public/dist/js/app.js',
         },
       },
@@ -41,19 +41,19 @@ module.exports = function(grunt) {
 
     // CSS TASKS ===============================================================
     // process the less file to style.css
-    less: {
+    /*less: {
       build: {
         files: {
           'public/dist/css/style.css': 'public/src/css/style.less'
         }
       }
-    },
+    },*/
 
     // take the processed style.css file and minify
     cssmin: {
       build: {
         files: {
-          'public/dist/css/style.min.css': 'public/dist/css/style.css'
+          'public/dist/css/style.min.css': 'public/css/style.css'
         }
       }
     },
@@ -62,8 +62,8 @@ module.exports = function(grunt) {
     // watch css and js files and process the above tasks
     watch: {
       css: {
-        files: ['public/src/css/**/*.less'],
-        tasks: ['less', 'cssmin']
+        files: ['public/css/style.css'],
+        tasks: ['cssmin']
       },
       js: {
         files: ['public/js/**/*.js'],
@@ -99,7 +99,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-shell-spawn');
 
-  grunt.registerTask('default', ['less', 'cssmin', 'concat', 'jshint', 'uglify', 'concurrent']);
+  grunt.registerTask('default', ['cssmin', 'concat', 'jshint', 'uglify', 'concurrent']);
   grunt.registerTask('test', ['concat', 'karma']);
   grunt.registerTask('dist', ['jshint', 'concat', 'uglify'])
 };

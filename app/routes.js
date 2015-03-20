@@ -66,7 +66,7 @@ module.exports = function(app, express) {
     .post(function (req, res) {
         var simpleNote = new SimpleNote();
         simpleNote.note = req.body.note;
-
+        simpleNote.date = req.body.date;
         simpleNote.save(function(err) {
             if (err) {
                 res.send(err);
@@ -95,6 +95,7 @@ module.exports = function(app, express) {
             if (err)
                 res.send(err);
             simpleNote.note = req.body.note;
+            simpleNote.date = req.body.date;
             simpleNote.save(function(err) {
                 if (err)
                     res.send(err);

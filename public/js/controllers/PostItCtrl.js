@@ -3,7 +3,6 @@ angular.module('PostItCtrl', []).controller('PostItController', ['$scope', 'Post
     //get all the post its
     postItSrv.query().$promise.then(function (value) {
         $scope.postIts = value;
-        console.log(value);
     });
 
 
