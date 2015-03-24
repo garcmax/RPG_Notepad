@@ -16,6 +16,9 @@ describe('filters : search ', function () {
         expect( !! searchFilter).toBe(true);
     });
 
+    it('should work without search text', function () {
+        expect(searchFilter(toSearch)).toEqual(toSearch);
+    });
     it('should find toto', function() {
         var found = [npc1];
         expect(searchFilter(toSearch, 'toto')).toEqual(found);

@@ -16,8 +16,8 @@
         </form>
     </div>
     <div class="col-sm-4 btn-group-vertical">
-        <input type="text" class="form-control" placeholder="Search">
+        <input type="text" class="form-control" placeholder="Search" ng-model="searchText">
         <button type="button" class="btn" ng-class="{'btn-info': npc._id!=npcDisplayed._id, 'btn-primary':npc._id==npcDisplayed._id}"
-                ng-repeat="npc in npcs" ng-click="displayNpc(npc)">{{npc.name}}</button>
+                ng-repeat="npc in npcs | search:searchText" ng-click="displayNpc(npc)">{{npc.name}}</button>
     </div>
 </div>

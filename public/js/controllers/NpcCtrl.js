@@ -1,5 +1,6 @@
 angular.module('NpcCtrl', []).controller('NpcController', ['$scope', 'NpcService', function($scope, NpcService) {
 
+    $scope.npcs = [];
     function query() {
         NpcService.query().$promise.then(function (value) {
             $scope.npcs = value;
