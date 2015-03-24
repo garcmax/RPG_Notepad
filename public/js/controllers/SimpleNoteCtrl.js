@@ -25,7 +25,7 @@ angular.module('SimpleNoteCtrl', []).controller('SimpleNoteController', ['$scope
     };
 
     $scope.createNewNote = function () {
-        var newNote = {note: '', date: new Date().toDateString()};
+        var newNote = {note: '', date: new Date()};
         //FIXME C EST IMMONDE
         NoteService.save(newNote).$promise.then(function () {
             query();
@@ -35,7 +35,6 @@ angular.module('SimpleNoteCtrl', []).controller('SimpleNoteController', ['$scope
     };
 
     $scope.saveNote = function(note) {
-        console.log('save');
         note.date = new Date();
         NoteService.update({id: note._id}, note).$promise.then(function () {
             formatDate([$scope.noteDisplayed]);

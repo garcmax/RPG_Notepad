@@ -1,0 +1,23 @@
+<div class="row jumbotron" ng-controller="NpcController">
+    <div class="col-sm-4">
+        <span>{{npcDisplayed.name}}</span><br />
+        <span>{{npcDisplayed.note}}</span>
+    </div>
+    <div class="col-sm-4">
+        <form ng-submit="saveNpc()">
+            <label>Name :</label>
+            <input type="text" class="form-control" placeholder="Name" ng-model="npcDisplayed.name">
+            <label>Note :</label>
+            <textarea type="text" class="form-control" placeholder="Note" ng-model="npcDisplayed.note"></textarea>
+            <div class="saveDelete">
+                <button type="submit" class="btn btn-success">Save</button>
+                <button type="button" class="btn btn-danger left-margin" ng-click="deleteNpc()">Delete</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-4 btn-group-vertical">
+        <input type="text" class="form-control" placeholder="Search">
+        <button type="button" class="btn" ng-class="{'btn-info': npc._id!=npcDisplayed._id, 'btn-primary':npc._id==npcDisplayed._id}"
+                ng-repeat="npc in npcs" ng-click="displayNpc(npc)">{{npc.name}}</button>
+    </div>
+</div>

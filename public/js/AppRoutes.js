@@ -12,7 +12,7 @@ angular.module('appRoutes', ['dateNoteInter']).config(['$routeProvider', '$locat
         })
         .when('/npcNote', {
             templateUrl: 'views/npcNotes.html',
-            controller: 'PostItController'
+            controller: 'NpcController'
         });
 
 

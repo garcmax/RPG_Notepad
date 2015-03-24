@@ -6,3 +6,8 @@
 .left-margin {
 margin-left:10px;
 }
+
+.saveDelete {
+padding-top: 5px;
+float: right;
+}

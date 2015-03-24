@@ -10,7 +10,7 @@
         <form ng-submit="saveNote(noteDisplayed)">
             <label>Notes :</label>
             <textarea type="text" class="form-control" placeholder="Add a note" ng-model="noteDisplayed.note"></textarea>
-            <div style="padding-top: 5px">
+            <div class="saveDelete">
                 <button type="submit" class="btn btn-success">Save</button>
                 <button type="button" class="btn btn-danger left-margin" ng-click="deleteNote(noteDisplayed)">Delete</button>
             </div>

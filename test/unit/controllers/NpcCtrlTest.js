@@ -1,20 +1,19 @@
-describe('controller: simpleNoteCtrl', function() {
-      var mockData = [{note: 'note 1', _id: 1}, {note: 'note 2', _id: 2}];
-      var lastNote = {note: 'note 2', _id: 2};
+describe('controller: npcCtrl', function() {
+      var mockData = [{note: 'note 1', name: 'name 1', _id: 1}, {note: 'note 2', name: 'name 2', _id: 2}];
+      var lastNpc = {note: 'note 2', name: 'name 2', _id: 2};
 
       beforeEach(module('rpgNoteApp'));
-      beforeEach(module('notesServices'));
+      beforeEach(module('npcServices'));
 
       describe('query', function(){
          var scope, ctrl;
 
          beforeEach(inject(function($rootScope, $controller) {
            scope = $rootScope.$new();
-           ctrl = $controller('SimpleNoteController', {$scope: scope});
+           ctrl = $controller('NpcController', {$scope: scope});
            init = {
                 query: function () {
-                    scope.notes = mockData;
-                    scope.noteDisplayed = mockData[mockData.length-1];
+                    scope.npcs = mockData;
                 }
            }
 
@@ -25,11 +24,11 @@ describe('controller: simpleNoteCtrl', function() {
 
          it('should get all simple notes', function() {
             expect(init.query).toHaveBeenCalled();
-            expect(true).toBe(angular.equals(scope.notes, mockData));
+            expect(true).toBe(angular.equals(scope.npcs, mockData));
          });
-         it('should displayed the last note', function() {
+         /*it('should displayed the last note', function() {
             expect(true).toBe(angular.equals(scope.noteDisplayed, lastNote));
-          });
+          });*/
 
       });
 })

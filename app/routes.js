@@ -1,5 +1,6 @@
 var SimpleNote = require('./models/note');
 var PostIt = require('./models/postIt')
+var Npc = require('./models/npc')
 var path = require('path');
 
 module.exports = function(app, express) {
@@ -110,6 +111,57 @@ module.exports = function(app, express) {
                 if (err)
                     res.send(err)
                 res.json({message : 'simpleNote deleted successfully'})
+            });
+    });
+
+    router.route('/api/npc')
+    .post(function (req, res) {
+        var npc = new Npc();
+        npc.name = req.body.name;
+        npc.note = req.body.note;
+        npc.save(function(err) {
+            if (err) {
+                res.send(err);
+            }
+            res.json({message : 'npc created'});
+        });
+    })
+    .get(function (req, res) {
+        Npc.find(function(err, npcs) {
+            if (err)
+                res.send(err)
+            res.json(npcs);
+        });
+    });
+
+    router.route('/api/npc/:id')
+    .get(function(req, res) {
+        Npc.findById(req.params.id, function(err, npc) {
+            if (err)
+                res.send(err);
+            res.json(npc);
+        });
+    })
+    .put(function (req, res) {
+        Npc.findById(req.params.id, function(err, npc) {
+            if (err)
+                res.send(err);
+            npc.name = req.body.name;
+            npc.note = req.body.note;
+            npc.save(function(err) {
+                if (err)
+                    res.send(err);
+                res.json({message : 'note updated'});
+            });
+        });
+    })
+    .delete(function(req, res) {
+        Npc.remove({
+            _id: req.params.id
+            }, function(err, npc) {
+                if (err)
+                    res.send(err)
+                res.json({message : 'npc deleted successfully'})
             });
     });
 
