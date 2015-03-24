@@ -12,7 +12,8 @@ module.exports = function(grunt) {
     //concat all js files in specific orders
     concat: {
         dist: {
-          src: ['public/js/app.js', 'public/js/AppRoutes.js', 'public/js/services/*.js', 'public/js/interceptors/*.js', 'public/js/controllers/*.js'],
+          src: ['public/js/app.js', 'public/js/AppRoutes.js', 'public/js/services/*.js',
+           'public/js/interceptors/*.js', 'public/js/filter/*.js','public/js/controllers/*.js'],
           dest: 'public/dist/js/app.js',
         },
       },
