@@ -36,11 +36,19 @@ angular.module('SimpleNoteCtrl', []).controller('SimpleNoteController', ['$scope
 
     $scope.saveNote = function(note) {
         note.date = new Date();
-        NoteService.update({id: note._id}, note).$promise.then(function () {
-            formatDate([$scope.noteDisplayed]);
-        }, function(err) {
+        if (note._id) {
+            NoteService.update({id: note._id}, note).$promise.then(function () {
+                formatDate([$scope.noteDisplayed]);
+            }, function(err) {
 
-        });
+            });
+        } else {
+            NoteService.create(note).$promise.then(function () {
+                formatDate([$scope.noteDisplayed]);
+                }, function(err) {
+
+                });
+        }
     };
 
     $scope.deleteNote = function (note) {

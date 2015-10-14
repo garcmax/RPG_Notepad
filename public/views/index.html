@@ -15,10 +15,20 @@
     <script src="libs/angular/angular.min.js"></script>
     <script src="libs/angular-route/angular-route.min.js"></script>
     <script src="libs/angular-resource/angular-resource.min.js"></script>
-    <script src="libs/json.date-extensions.min.js"></script>
+    <script src="libs/json.date-extensions/json.date-extensions.min.js"></script>
 
     <!-- ANGULAR CUSTOM -->
     <script src="dist/js/app.js"></script>
+    <script>
+        var date = new Date();
+var json = JSON.stringify(date);
+console.log(date);
+
+// JSON date
+var date2 = JSON.dateStringToDate(json);
+console.log(date2);
+
+    </script>
 
 </head>
 <body ng-app="rpgNoteApp">
