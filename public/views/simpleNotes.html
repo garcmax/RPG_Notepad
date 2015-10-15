@@ -3,7 +3,7 @@
         {{noteDisplayed.note}}
     </div>
     <div class="col-sm-3 btn-group-vertical">
-        <button type="button" class="btn" ng-class="{'btn-info': note._id!=noteDisplayed._id, 'btn-primary':note._id==noteDisplayed._id}" ng-repeat="note in notes" ng-click="displayNote(note)">{{note.date}}</button>
+        <button type="button" class="btn" ng-class="{'btn-info': note._id!=noteDisplayed._id, 'btn-primary':note._id==noteDisplayed._id}" ng-repeat="note in notes" ng-click="displayNote(note)">{{ note.note | limitTo: 20 }}{{note.note.length > 20 ? '...' : ''}}</button>
         <button type="button" class="btn btn-default" ng-click="createNewNote()">Add new note</button>
     </div>
     <div class="col-sm-12" style="padding-top: 25px">

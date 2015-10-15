@@ -25,8 +25,8 @@ angular.module('SimpleNoteCtrl', []).controller('SimpleNoteController', ['$scope
     };
 
     $scope.createNewNote = function () {
-        var newNote = {note: '', date: new Date()};
-        //FIXME C EST IMMONDE
+        var newNote = {note: 'new note', date: new Date()};
+        //FIXME find a better solution than just query all notes again
         NoteService.save(newNote).$promise.then(function () {
             query();
         }, function (err) {
